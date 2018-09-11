@@ -1,0 +1,27 @@
+################# Final deployment YAML file used
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: bookstore-deploy
+spec:
+  replicas: 10
+  minReadySeconds: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+      maxSurge: 1
+  template:
+    metadata:
+      labels:
+        app: bookstore-app
+    spec:
+      containers:
+      - name: bookstore-pod
+        image: imjayakumar/bookstoreapp
+        ports:
+        - containerPort: 3000
+      - name: mongodb
+        image: mongo
+        ports:
+        - containerPort: 27017
