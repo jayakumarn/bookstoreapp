@@ -5,6 +5,9 @@ metadata:
   name: bookstore-deploy
 spec:
   replicas: 10
+  selector:
+    matchLabels:
+      app: bookstore-app
   minReadySeconds: 10
   strategy:
     type: RollingUpdate
