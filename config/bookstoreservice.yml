@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: bookstoreapp
+  name: bookstoreapp
+spec:
+  type: NodePort
+  ports:
+    - port: 3000
+      nodePort: 34109      
+  selector:
+    name: bookstoreapp
